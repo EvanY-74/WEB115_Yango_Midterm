@@ -18,8 +18,8 @@ document.getElementById('Button1').addEventListener('click', () => {
     } while (mortgageTerm != '15' && mortgageTerm != '30');
     mortgageTerm = parseInt(mortgageTerm) * 12; // in months
 
-    // const interestRate = 0.0575; // 5.75%
-    const interestRate = 0.045; // 4.5%
+    const interestRate = 0.0575; // 5.75%
+    // const interestRate = 0.045; // 4.5%
 
     // Calculate and display all values
     const monthlyPayment = ((interestRate / 12 * remainder) / (1 - Math.pow(1 + interestRate / 12, -mortgageTerm))).toFixed(2);
@@ -37,7 +37,7 @@ document.getElementById('Button1').addEventListener('click', () => {
         loanBalance = round(loanBalance); // round .999999 -> 1
 
         const p = document.createElement('p');
-        p.innerHTML = `Month ${i + 1}: interest: $${interestPaid.toFixed(2)}, principal: $${principalPaid.toFixed(2)}, balance: $${loanBalance.toFixed(2)}`;
+        p.innerHTML = `Month ${i + 1}: interest: $${interestPaid.toFixed(2)}, principal: $${principalPaid.toFixed(2)}, balance: $${Math.max(0, loanBalance.toFixed(2))}`;
         table.appendChild(p);
     }
 
